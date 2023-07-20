@@ -1,0 +1,209 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Survey API",
+        "description": "API documentation for Survey API",
+        "contact": {
+            "email": "rohitgautamofficialmail@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/store": {
+            "post": {
+                "tags": [
+                    "Surveys"
+                ],
+                "summary": "Create a new survey",
+                "operationId": "b78ce8b57cf6c9a823fdae66834d29d2",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of the user",
+                                        "type": "string",
+                                        "example": "Enter Your Name"
+                                    },
+                                    "email": {
+                                        "description": "Email address of the user",
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "Enter Your Email"
+                                    },
+                                    "age": {
+                                        "description": "Age of the user",
+                                        "type": "integer",
+                                        "example": 25
+                                    },
+                                    "role": {
+                                        "description": "Role of the user",
+                                        "type": "string",
+                                        "example": "Admin"
+                                    },
+                                    "g1": {
+                                        "description": "Group of the user",
+                                        "type": "string",
+                                        "example": "Group 1"
+                                    },
+                                    "feature": {
+                                        "description": "Feature description",
+                                        "type": "string",
+                                        "example": "Some Feature"
+                                    },
+                                    "skill_suggestion[]": {
+                                        "description": "Array of skill suggestions",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "example": [
+                                            "Suggestion 1",
+                                            "Suggestion 2",
+                                            "Suggestion 3"
+                                        ]
+                                    },
+                                    "suggestion": {
+                                        "description": "Other suggestions",
+                                        "type": "string",
+                                        "example": "Some suggestion"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Survey saved successfully"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/surveys/{id}/edit": {
+            "get": {
+                "tags": [
+                    "Surveys"
+                ],
+                "summary": "Get the survey data for editing",
+                "operationId": "0e48d28743e31fe8f26967b93b930c42",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Survey ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Survey not found"
+                    }
+                }
+            }
+        },
+        "/api/surveys/{id}": {
+            "post": {
+                "tags": [
+                    "Surveys"
+                ],
+                "summary": "Update the survey data",
+                "operationId": "67ffc89327ab2de699c7afc1321f6ee4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Survey ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of the user",
+                                        "type": "string",
+                                        "example": "Enter Your Name"
+                                    },
+                                    "email": {
+                                        "description": "Email address of the user",
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "Enter Your Email"
+                                    },
+                                    "age": {
+                                        "description": "Age of the user",
+                                        "type": "integer",
+                                        "example": 25
+                                    },
+                                    "role": {
+                                        "description": "Role of the user",
+                                        "type": "string",
+                                        "example": "Admin"
+                                    },
+                                    "g1": {
+                                        "description": "Group of the user",
+                                        "type": "string",
+                                        "example": "Group 1"
+                                    },
+                                    "feature": {
+                                        "description": "Feature description",
+                                        "type": "string",
+                                        "example": "Some Feature"
+                                    },
+                                    "skill_suggestion[]": {
+                                        "description": "Array of skill suggestions",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "example": [
+                                            "Suggestion 1",
+                                            "Suggestion 2",
+                                            "Suggestion 3"
+                                        ]
+                                    },
+                                    "suggestion": {
+                                        "description": "Other suggestions",
+                                        "type": "string",
+                                        "example": "Some suggestion"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Survey updated successfully"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Survey not found"
+                    }
+                }
+            }
+        }
+    }
+}
